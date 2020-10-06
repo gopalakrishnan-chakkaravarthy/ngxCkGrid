@@ -1,0 +1,22 @@
+.ck-grid-contextmenu {
+  position: absolute;
+  border: 1px solid gray;
+  margin-top: 1.6rem;
+  background-color: white;
+  width: 8rem;
+}
+.ck-grid-list-group {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ck-grid-list-group li {
+  border-bottom: 1px solid #ddd;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  &:hover {
+    background-color: #e8ecf1;
+    cursor: pointer;
+  }
+}

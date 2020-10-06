@@ -1,0 +1,10 @@
+<div class="ck-grid-contextmenu" [ngStyle]="{ 'left.px': x, 'top.px': y }">
+  <ul class="ck-grid-list-group">
+    <li *ngFor="let item of contextMenuItems">
+      <div (click)="contextMenuItemsClick(item)">
+        <span *ngIf="item.iconClass" class="{{ item.iconClass }}"></span>
+        {{ item.name }}
+      </div>
+    </li>
+  </ul>
+</div>

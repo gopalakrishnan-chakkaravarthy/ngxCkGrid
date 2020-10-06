@@ -2,5 +2,46 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "ck-grid": {
+      "projectType": "library",
+      "root": "projects/ck-grid",
+      "sourceRoot": "projects/ck-grid/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ck-grid/tsconfig.lib.json",
+            "project": "projects/ck-grid/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ck-grid/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ck-grid/src/test.ts",
+            "tsConfig": "projects/ck-grid/tsconfig.spec.json",
+            "karmaConfig": "projects/ck-grid/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ck-grid/tsconfig.lib.json",
+              "projects/ck-grid/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "ck-grid"
 }

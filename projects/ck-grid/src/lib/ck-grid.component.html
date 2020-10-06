@@ -1,0 +1,170 @@
+<div class="ck-grid-alert" *ngIf="!gridProps.hasColumns || !gridProps.hasData">
+  <span
+    class="ck-grid-close-btn"
+    onclick="this.parentElement.style.display='none';"
+    >&times;</span
+  >
+  <strong>No Data</strong> Found.
+</div>
+<div
+  class="ck-grid-table-container"
+  (scroll)="onScroll($event)"
+  [ngClass]="{ hide: !gridProps.hasColumns || !gridProps.hasData }"
+  (click)="disableContextMenu()"
+  oncontextmenu="return false;"
+>
+  <app-ck-grid-modal
+    id="columnChooser"
+    style="display: none"
+    *ngIf="tableOptions.enableColumnChooser"
+  >
+    <div class="ck-grid-tg-modal">
+      <div class="ck-grid-tg-modal-body">
+        <span class="ck-grid-close-btn" (click)="closeModal('columnChooser')"
+          >&times;</span
+        >
+        <div class="ck-grid-row">
+          <input
+            type="text"
+            id="columnSearch"
+            [(ngModel)]="searchToggleColumns"
+            placeholder="Search columns..."
+            class="ck-grid-filter-class ck-grid-text-search-columns"
+          />
+        </div>
+        <ul class="ck-grid-list-group">
+          <li
+            *ngFor="
+              let column of visibleColumns
+                | searchFilter: searchToggleColumns:'name'
+            "
+            class="ck-grid-list-group-item"
+          >
+            <label>
+              <input
+                type="checkbox"
+                [value]="column.name"
+                id="column.name"
+                (change)="toggleColumns($event, column)"
+              />
+              {{ column.name }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="ck-grid-tg-modal-background"></div>
+  </app-ck-grid-modal>
+  <div class="ck-grid-row" *ngIf="tableOptions.enableColumnChooser">
+    <button
+      class="ck-grid-btn-primary ck-grid-pull-right ck-grid-col-choser"
+      (click)="openModal($event, 'columnChooser')"
+    >
+      <i class="ck-grid-tree-grid-more"></i>
+    </button>
+  </div>
+  <div class="ck-grid-row">
+    <table
+      class="ck-grid-table"
+      cellspacing="0"
+      cellpadding="0"
+      id="{{ tableOptions.id }}"
+      (clickOutside)="disableContextMenu()"
+    >
+      <thead>
+        <tr>
+          <th
+            *ngFor="let header of fTreeObjectFull.header; let idx = index"
+            style="cursor: pointer !important"
+          >
+            <div
+              *ngIf="tableOptions.enableFixedHeader"
+              style="width: inherit"
+              [style.margin-top.px]="gridHeaderTop"
+              (click)="sortItemsByColumn(header)"
+            >
+              <span
+                [ngClass]="{ hide: !enableSort }"
+                class="ck-grid-treegrid ck-grid-tree-grid-sort"
+              >
+              </span>
+              {{ header.name }}
+            </div>
+
+            <span
+              *ngIf="!tableOptions.enableFixedHeader"
+              (click)="sortItemsByColumn(header)"
+            >
+              <i
+                [ngClass]="{ hide: !enableSort }"
+                class="ck-grid-tree-grid ck-grid-tree-grid-sort"
+              >
+              </i>
+              {{ header.name }}
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="tableOptions.enableColumnFilters">
+          <td
+            *ngFor="
+              let header of fTreeObjectFull.header;
+              let headerIndex = index
+            "
+          >
+            <input
+              type="text"
+              placeholder="{{ header.name }}"
+              (input)="columnFilterchanges(header.id, $event.target.value)"
+              class="ck-grid-text-col-filter"
+            />
+          </td>
+        </tr>
+        <tr
+          *ngFor="let item of fTreeObjectFull.data; let rowIndex = index"
+          class="{{ item.class }}"
+          (click)="rowSelection($event, rowIndex, item)"
+        >
+          <td
+            *ngFor="let header of fTreeObjectFull.header; let hdrIndex = index"
+            (click)="cellClick(item)"
+            (contextmenu)="onContextMenuRightClick($event, item)"
+          >
+            <span
+              [ngStyle]="{ 'padding-left': getDetails(item.$$treeLevel) }"
+              *ngIf="hdrIndex === 0"
+            >
+              <span
+                style="cursor: pointer"
+                (click)="itemClick($event, rowIndex, item)"
+                [ngClass]="getIconClass(item)"
+              >
+              </span>
+              {{ item[fTreeObjectFull.header[0].id] }}
+            </span>
+            <span *ngIf="hdrIndex > 0"> {{ item[header.id] }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<svg class="ck-grid-spinner" viewBox="0 0 50 50" *ngIf="displaySpinnerIcon">
+  <circle
+    class="ck-grid-path"
+    cx="25"
+    cy="25"
+    r="20"
+    fill="none"
+    stroke-width="5"
+  ></circle>
+</svg>
+<div *ngIf="contextmenu && tableOptions.enableContextMenu">
+  <app-ck-grid-context-menu
+    [x]="contextmenuX"
+    [y]="contextmenuY"
+    [contextMenuItems]="tableOptions.contextMenuItems"
+    (contextMenuClick)="contextMenuClick($event)"
+  ></app-ck-grid-context-menu>
+</div>
