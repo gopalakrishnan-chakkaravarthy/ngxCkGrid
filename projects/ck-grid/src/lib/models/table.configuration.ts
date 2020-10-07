@@ -7,6 +7,7 @@ export class TableConfiguration {
   enableColumnChooser?: boolean; // true ||  false
   enableSort?: boolean; // true ||  false
   enableColumnFilters?: boolean; // true ||  false
+  enableRowSelection?: boolean; // true ||  false
   isTreeStructure?: boolean; // true ||  false
   icons?: TableIcon;
   rowSelection?: string; // single  || multiple

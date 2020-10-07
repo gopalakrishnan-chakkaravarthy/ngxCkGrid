@@ -8,12 +8,12 @@ import { NGXCkGridModalComponent } from './ck-grid-modal/ck-grid-modal.component
 import { NGXCKFilterPipe } from './filters/ngxck-filter.pipe';
 @NgModule({
   declarations: [
+    NGXCKFilterPipe,
     NGXCkGridComponent,
     NGXCkGridContextMenuComponent,
     NGXCkGridModalComponent,
   ],
-  providers: [NGXCKFilterPipe],
   imports: [BrowserModule, CommonModule, FormsModule],
-  exports: [NGXCKFilterPipe, NGXCkGridComponent, NGXCkGridModalComponent],
+  exports: [NGXCkGridComponent, NGXCkGridModalComponent, NGXCKFilterPipe],
 })
 export class NGXCkGridModule {}
