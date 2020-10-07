@@ -73,6 +73,4 @@ To bind data and columns to grid use **TableConfiguration** class to define prop
 
 # Demo
 
-Demo available at below git hub repository.
-
-This project was generated with [ngxCKGridDemo](https://github.com/gopalakrishnan-chakkaravarthy/ngxCkGridDemo.git).
+Demo available at git hub repository [ngxCKGridDemo](https://github.com/gopalakrishnan-chakkaravarthy/ngxCkGridDemo.git).
