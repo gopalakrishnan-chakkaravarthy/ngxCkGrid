@@ -45,21 +45,22 @@ To bind data and columns to grid use **TableConfiguration** class to define prop
 
 ### Properties
 
-| Name                |      Datatype       |                                                        Description |
-| ------------------- | :-----------------: | -----------------------------------------------------------------: |
-| id                  |       string        |                                          sets unique id for a grid |
-| data                |    Object Array     |                            An array of objects with key and values |
-| columns             | ColumnConfiguration |  Use **ColumnConfiguration** interface to define column properties |
-| rowSelection        |       string        |                                                 single or multiple |
-| enableColumnChooser |       boolean       |                 Use **true** or **false** to enable column chooser |
-| enableSort          |       boolean       |                        Use **true** or **false** to enable sorting |
-| enableFixedHeader   |       boolean       |                      Use **true** or **false** to set fixed header |
-| showSpinner         |       boolean       | Use **true** or **false** to enable sppinner on scroll/sort/filter |
-| enableColumnFilters |       boolean       |                 Use **true** or **false** to enable column filters |
-| isTreeStructure     |       boolean       |                 Use **true** or **false** to define tree structure |
-| enableContextMenu   |       boolean       |              Use **true** or **false** to enable grid context menu |
-| contextMenuItems    | ContextMenuItems[]  |        Use **ContextMenuItems[]** interfac to define context menus |
-| icons               |      TableIcon      |            Use **TableIcon** interfac to define icons for the grid |
+| Name                |      Datatype       |                                                                Description |
+| ------------------- | :-----------------: | -------------------------------------------------------------------------: |
+| id                  |       string        |                                                  sets unique id for a grid |
+| data                |    Object Array     |                                    An array of objects with key and values |
+| columns             | ColumnConfiguration |          Use **ColumnConfiguration** interface to define column properties |
+| enableRowSelection  |       boolean       |                  Use **true** or **false** to enable/disable row selection |
+| rowSelection        |       string        |                                                         single or multiple |
+| enableColumnChooser |       boolean       |                 Use **true** or **false** to enable/disable column chooser |
+| enableSort          |       boolean       |                        Use **true** or **false** to enable/disable sorting |
+| enableFixedHeader   |       boolean       |                   Use **true** or **false** to enable/disable fixed header |
+| showSpinner         |       boolean       | Use **true** or **false** to enable/disable sppinner on scroll/sort/filter |
+| enableColumnFilters |       boolean       |                 Use **true** or **false** to enable/disable column filters |
+| isTreeStructure     |       boolean       |                         Use **true** or **false** to define tree structure |
+| enableContextMenu   |       boolean       |              Use **true** or **false** to enable/disable grid context menu |
+| contextMenuItems    | ContextMenuItems[]  |                Use **ContextMenuItems[]** interfac to define context menus |
+| icons               |      TableIcon      |                    Use **TableIcon** interfac to define icons for the grid |
 
 ### Events
 
