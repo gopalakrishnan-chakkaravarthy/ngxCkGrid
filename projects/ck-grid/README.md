@@ -64,12 +64,12 @@ To bind data and columns to grid use **TableConfiguration** class to define prop
 
 ### Events
 
-| Name                    |             Description              |
-| ----------------------- | :----------------------------------: |
-| gridRowClick            |         Fiered on row click          |
-| gridCellClick           |         Fiered on cell click         |
-| gridExpandCollapseClick | Fiered on Exapnd/Collapse icon click |
-| gridContextMenuClick    |  Fiered on grid context menu click   |
+| Name                    |             Description             |
+| ----------------------- | :---------------------------------: |
+| gridRowClick            |         Fired on row click          |
+| gridCellClick           |         Fired on cell click         |
+| gridExpandCollapseClick | Fired on Exapnd/Collapse icon click |
+| gridContextMenuClick    |  Fired on grid context menu click   |
 
 # Demo
 
