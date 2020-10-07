@@ -1,15 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
-  name: 'searchFilter'
+  name: 'searchFilter',
 })
-export class FilterPipe implements PipeTransform {
-  public transform(value: any[], searchText: string, filterColumn?: string): any[] {
+export class NGXCKFilterPipe implements PipeTransform {
+  public transform(
+    value: any[],
+    searchText: string,
+    filterColumn?: string
+  ): any[] {
     if (!searchText || searchText.length <= 3) {
       return value;
     }
     const allRowValues: any[] = [];
     this.processAllRows(value, allRowValues);
-    const filteredResult = (value || []).filter(item => {
+    const filteredResult = (value || []).filter((item) => {
       const textValue = filterColumn ? item[filterColumn] : item;
       if (!textValue) {
         return false;

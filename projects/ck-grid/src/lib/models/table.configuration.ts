@@ -6,17 +6,11 @@ export class TableConfiguration {
   columns?: ColumnConfiguration[];
   enableColumnChooser?: boolean; // true ||  false
   enableSort?: boolean; // true ||  false
-  enableSearch?: boolean; // true ||  false
   enableColumnFilters?: boolean; // true ||  false
-  rowHoverClass?: string;
-  enablePaging?: boolean; // true ||  false
-  enableScroll?: boolean; // true ||  false
   isTreeStructure?: boolean; // true ||  false
   icons?: TableIcon;
   rowSelection?: string; // single  || multiple
-  enableRowSelection?: boolean; // true ||  false
   enableFixedHeader?: boolean;
-  enableLazyLoad?: boolean;
   showSpinner?: boolean;
   enableContextMenu?: boolean; // true || false
   contextMenuItems?: ContextMenuItems[] = [];

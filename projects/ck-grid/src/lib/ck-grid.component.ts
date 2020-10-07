@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FilterPipe } from './filters/filter.pipe';
+import { NGXCKFilterPipe } from './filters/ngxck-filter.pipe';
 import { ModalService } from './ck-grid-modal/modal.service';
 import { ColumnConfiguration, TableConfiguration } from '../public-api';
 
@@ -57,7 +57,7 @@ export class NGXCkGridComponent implements OnInit {
   private selectedRowOnContextMenuClick;
   constructor(
     private modalService: ModalService,
-    private filterPipe: FilterPipe
+    private filterPipe: NGXCKFilterPipe
   ) {}
 
   ngOnInit() {
@@ -188,6 +188,9 @@ export class NGXCkGridComponent implements OnInit {
     if (this.isExpanndCollapse) {
       this.isExpanndCollapse = false;
       return;
+    }
+    if (this.isSingleSelection) {
+      this.removeSelectedRows();
     }
     this.applyRowSelection($event);
     const checkCount: any = { count: 0 };
@@ -489,5 +492,17 @@ export class NGXCkGridComponent implements OnInit {
     return this.tableOptions.rowSelection
       ? this.tableOptions.rowSelection.toLowerCase() === 'single'
       : false;
+  }
+
+  private removeSelectedRows() {
+    const rowElements = document.getElementsByTagName('tr');
+    if (rowElements && rowElements.length > 0) {
+      this.selectedRows = [];
+      for (let index = 0; index < rowElements.length; index++) {
+        if (rowElements[index].classList.contains(this.rowSelectClass)) {
+          rowElements[index].classList.remove(this.rowSelectClass);
+        }
+      }
+    }
   }
 }

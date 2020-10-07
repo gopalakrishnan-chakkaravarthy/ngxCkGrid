@@ -1,24 +1,77 @@
-# CkGrid
+# NGXCkGrid
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+A resposive grid with lazy load feature to draw hierarchical data/tree data structure.
 
-## Code scaffolding
+The grid is developed to solve real world problem to bind tree data structure.Also the grid is purely angular based .
 
-Run `ng generate component component-name --project ck-grid` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ck-grid`.
-> Note: Don't forget to add `--project ck-grid` or else it will be added to the default project in your `angular.json` file. 
+## Installation
 
-## Build
+Install with npm:
 
-Run `ng build ck-grid` to build the project. The build artifacts will be stored in the `dist/` directory.
+> npm install ngx-ck-grid
 
-## Publishing
+Import the ngx-ck-grid module to your application module:
 
-After building your library with `ng build ck-grid`, go to the dist folder `cd dist/ck-grid` and run `npm publish`.
+```
+import { NGXCkGridModule } from 'ngx-ck-grid';
 
-## Running unit tests
+@NgModule({
 
-Run `ng test ck-grid` to execute the unit tests via [Karma](https://karma-runner.github.io).
+declarations: [...],
 
-## Further help
+imports: [NGXCkGridModule,...],
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+bootstrap: [AppComponent]
+
+})
+
+export class AppModule { }
+
+```
+
+## Usage
+
+```
+  <ngx-ck-grid
+    [tableOptions]="tableOptions"
+    (gridRowSelection)="gridRowSelection($event)"
+  ></ngx-ck-grid>
+
+```
+
+## Configuration
+
+To bind data and columns to grid use **TableConfiguration** class to define properties ,columns and data.
+
+### Properties
+
+| Name                |      Datatype       |                                                        Description |
+| ------------------- | :-----------------: | -----------------------------------------------------------------: |
+| id                  |       string        |                                          sets unique id for a grid |
+| data                |    Object Array     |                            An array of objects with key and values |
+| columns             | ColumnConfiguration |  Use **ColumnConfiguration** interface to define column properties |
+| rowSelection        |       string        |                                                 single or multiple |
+| enableColumnChooser |       boolean       |                 Use **true** or **false** to enable column chooser |
+| enableSort          |       boolean       |                        Use **true** or **false** to enable sorting |
+| enableFixedHeader   |       boolean       |                      Use **true** or **false** to set fixed header |
+| showSpinner         |       boolean       | Use **true** or **false** to enable sppinner on scroll/sort/filter |
+| enableColumnFilters |       boolean       |                 Use **true** or **false** to enable column filters |
+| isTreeStructure     |       boolean       |                 Use **true** or **false** to define tree structure |
+| enableContextMenu   |       boolean       |              Use **true** or **false** to enable grid context menu |
+| contextMenuItems    | ContextMenuItems[]  |        Use **ContextMenuItems[]** interfac to define context menus |
+| icons               |      TableIcon      |            Use **TableIcon** interfac to define icons for the grid |
+
+### Events
+
+| Name                    |             Description              |
+| ----------------------- | :----------------------------------: |
+| gridRowClick            |         Fiered on row click          |
+| gridCellClick           |         Fiered on cell click         |
+| gridExpandCollapseClick | Fiered on Exapnd/Collapse icon click |
+| gridContextMenuClick    |  Fiered on grid context menu click   |
+
+# Demo
+
+Demo available at below git hub repository.
+
+This project was generated with [ngxCKGridDemo](https://github.com/gopalakrishnan-chakkaravarthy/ngxCkGridDemo.git).

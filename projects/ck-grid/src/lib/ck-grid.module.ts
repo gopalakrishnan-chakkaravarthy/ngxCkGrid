@@ -5,15 +5,15 @@ import { FormsModule } from '@angular/forms';
 import { NGXCkGridComponent } from './ck-grid.component';
 import { NGXCkGridContextMenuComponent } from './ck-grid-context-menu/ck-grid-context-menu.component';
 import { NGXCkGridModalComponent } from './ck-grid-modal/ck-grid-modal.component';
-import { FilterPipe } from './filters/filter.pipe';
+import { NGXCKFilterPipe } from './filters/ngxck-filter.pipe';
 @NgModule({
   declarations: [
-    FilterPipe,
     NGXCkGridComponent,
     NGXCkGridContextMenuComponent,
     NGXCkGridModalComponent,
   ],
+  providers: [NGXCKFilterPipe],
   imports: [BrowserModule, CommonModule, FormsModule],
-  exports: [FilterPipe, NGXCkGridComponent, NGXCkGridModalComponent],
+  exports: [NGXCKFilterPipe, NGXCkGridComponent, NGXCkGridModalComponent],
 })
 export class NGXCkGridModule {}
