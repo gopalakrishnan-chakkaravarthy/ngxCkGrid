@@ -1,6 +1,6 @@
 {
   "name": "ngx-ck-grid",
-  "version": "0.0.4",
+  "version": "0.0.3",
   "description": "A Tree Grid/Hierarchical Grid to suport multiple level with tree data structure",
   "author": "Gopalakrishnan Chakkaravarthy (gopalakrishnan.chakkaravarthy@hotmail.com)",
   "repository": {
